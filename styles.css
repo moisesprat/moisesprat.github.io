@@ -20,7 +20,9 @@ body {
 
 .btn-primary,
 .btn-primary:visited,
-.btn-primary:hover,
+.btn-primary:hover {
+  background: #e6e9ee;
+},
 .btn-primary:active {
   display: inline-block;
   margin-top: 1.5rem;
