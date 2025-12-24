@@ -119,11 +119,14 @@
 <footer>
   <p>© Moises Prat</p>
 </footer>
-<a href="assets/Moises_Prat_CV.pdf"
-   class="sticky-download-icon"
+
+  <a href="assets/Moises_Prat_CV.pdf"
+     class="sticky-download-icon"
    download
-   aria-label="Download CV as PDF"
-   title="Download CV (PDF)">
+   onclick="gtag('event','cv_download',{
+     'event_category':'engagement',
+     'event_label':'Moises_Prat_CV'
+   })">
   
   <svg xmlns="http://www.w3.org/2000/svg"
        width="22"
