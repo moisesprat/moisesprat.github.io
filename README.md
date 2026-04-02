@@ -1,2 +1,4 @@
 # moisesprat.dev
-Moises Prat is a technology and data transformation leader
+Personal website of Moises Prat — Technology & Data Transformation Leader, Barcelona.
+
+https://moisesprat.dev
