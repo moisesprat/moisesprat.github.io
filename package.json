@@ -1,0 +1,11 @@
+{
+  "name": "moisesprat-dev",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
