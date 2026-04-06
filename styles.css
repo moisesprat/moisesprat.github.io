@@ -442,11 +442,13 @@ nav {
   flex-direction: column;
   gap: 1.75rem;
   padding-right: 3rem;
+  grid-column: 1;
 }
 
 .hero-track--research {
   padding-right: 0;
   padding-left: 3.5rem;
+  grid-column: 3;
 }
 
 .hero-title-block {
@@ -456,7 +458,7 @@ nav {
 }
 
 .hero-divider {
-  grid-row: 1 / -1;
+  grid-column: 2;
   background: rgba(255,255,255,0.1);
   align-self: stretch;
 }
