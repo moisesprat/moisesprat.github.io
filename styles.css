@@ -430,10 +430,7 @@ nav {
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
-  grid-template-rows: auto auto auto auto auto; /* badge | title | desc | actions | stats */
-  row-gap: 1.75rem;
   align-items: start;
-  align-content: start; /* prevent Safari from inflating auto rows inside stretched flex container */
   width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
@@ -441,11 +438,10 @@ nav {
 }
 
 .hero-track {
-  display: grid;
-  grid-row: 1 / -1;
-  grid-template-rows: subgrid;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
   padding-right: 3rem;
-  align-content: start;
 }
 
 .hero-track--research {
@@ -478,7 +474,6 @@ nav {
   padding: 0.4rem 0.9rem;
   border-radius: 40px;
   width: fit-content;
-  align-self: start; /* prevent stretching in subgrid rows */
 }
 
 .hero-badge--sports {
@@ -535,7 +530,6 @@ nav {
   flex-wrap: wrap;
   gap: 0.55rem;
   padding-top: 0.5rem;
-  align-self: start; /* prevent stretching in subgrid rows */
 }
 
 .stat-pill {
@@ -1361,8 +1355,6 @@ footer a:hover { color: #7ea5f8; }
     flex-direction: column;
     gap: 1.25rem;
     padding: 0;
-    grid-row: unset;
-    grid-template-rows: unset;
   }
 
   /* Separator above the research track */
