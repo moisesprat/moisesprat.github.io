@@ -1166,27 +1166,46 @@ nav {
 
 .sports-ctas {
   display: grid;
-  grid-template-columns: minmax(0, 420px);
+  grid-template-columns: minmax(0, 660px);
   gap: 1rem;
   margin-top: 2rem;
 }
 
 .sports-cta-card {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
   padding: 1.5rem;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--off);
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  text-decoration: none;
-  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .sports-cta-card:hover {
   border-color: var(--green-md);
   box-shadow: 0 4px 16px rgba(14,166,110,0.08);
-  transform: translateY(-2px);
+}
+
+/* Strava iframe wrapper */
+.strava-embed {
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  line-height: 0; /* remove whitespace below iframe */
+}
+.strava-embed iframe {
+  display: block;
+}
+
+/* Info column next to the iframe */
+.strava-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .sports-cta-card .cta-icon { font-size: 1.75rem; }
@@ -1205,10 +1224,15 @@ nav {
 }
 
 .sports-cta-card .cta-link {
+  display: inline-block;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--green);
   margin-top: 0.25rem;
+  text-decoration: none;
+}
+.sports-cta-card .cta-link:hover {
+  text-decoration: underline;
 }
 
 /* ================================================================
@@ -1317,10 +1341,12 @@ footer a:hover { color: #7ea5f8; }
    ================================================================ */
 
 @media (max-width: 1024px) {
+  /* Switch hero to a simple flex column — avoids display:contents + subgrid
+     bugs on Safari/iPad where tracks could collapse to circle shapes */
   .hero-inner {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-    row-gap: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     max-width: 640px;
     padding: 3.5rem 1.25rem;
   }
@@ -1328,23 +1354,23 @@ footer a:hover { color: #7ea5f8; }
   .hero-divider { display: none; }
 
   .hero-track {
-    display: contents; /* let children flow directly into hero-inner on mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0;
+    grid-row: unset;
+    grid-template-rows: unset;
   }
 
-  .hero-track--research > * {
-    padding-left: 0;
-  }
-
+  /* Separator above the research track */
   .hero-track--research {
-    padding-left: 0;
-  }
-
-  /* Separator before research track on mobile */
-  .hero-track--research > .hero-badge {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
+    padding: 0;
+    padding-top: 2rem;
     border-top: 1px solid rgba(255,255,255,0.08);
   }
+
+  /* KPI items: reduce padding at tablet so cells don't become square */
+  .kpi-item { padding: 1.5rem 1.25rem; }
 
   .summary-layout {
     grid-template-columns: 1fr;
@@ -1409,9 +1435,10 @@ footer a:hover { color: #7ea5f8; }
   .companies-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .kpi-item { padding: 1.5rem 1.25rem; }
 
   .sports-ctas { grid-template-columns: 1fr; }
+  .sports-cta-card { flex-direction: column; }
+  .strava-embed iframe { width: 100%; max-width: 300px; }
 
   .marathon-table { font-size: 0.8rem; }
   .marathon-table th,
