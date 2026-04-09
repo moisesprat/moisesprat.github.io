@@ -747,8 +747,8 @@ a.cert-card:hover {
 }
 
 .cert-logo {
-  width: 72px;
-  height: 72px;
+  width: 124px;
+  height: 124px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -756,10 +756,16 @@ a.cert-card:hover {
 }
 
 .cert-logo img {
-  width: 72px;
-  height: 72px;
+  width: 124px;
+  height: 124px;
   object-fit: contain;
   display: block;
+}
+
+.cert-logo--round {
+  border-radius: 30%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .cert-info {
