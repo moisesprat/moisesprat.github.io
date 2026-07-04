@@ -110,7 +110,7 @@
         "@id": "https://prospect-ai.moisesprat.dev/#app",
         "name": "ProspectAI",
         "url": "https://prospect-ai.moisesprat.dev",
-        "description": "Multi-agent investment research pipeline built on CrewAI. Four specialised agents (Market, Technical, Fundamental, Strategist) deliver structured investment briefs in real time.",
+        "description": "6-agent CrewAI pipeline with adversarial critic review · PyPI package",
         "applicationCategory": "FinanceApplication",
         "author": { "@id": "https://moisesprat.dev/#person" },
         "codeRepository": "https://github.com/moisesprat/ProspectAI",
@@ -615,7 +615,7 @@
             <div class="project-col">
               <div class="project-col-label">The Solution</div>
               <ul>
-                <li>Multi-agent pipeline on CrewAI — 4 agents in sequence, each owning a distinct research stage</li>
+                <li>6-agent sequential pipeline on CrewAI — Draft→Critic→Final quality gate with adversarial review</li>
                 <li>Modal/FastAPI backend streams agent progress in real time over SSE</li>
                 <li>Cloudflare Pages frontend renders Bloomberg-inspired dark terminal reports</li>
                 <li>Published as an open-source Python package on PyPI — installable in one command</li>
@@ -646,11 +646,26 @@
                 <span class="agent-src">Balance sheets · valuation multiples · growth metrics</span>
               </div>
               <div class="agent-arrow-sep" aria-hidden="true">→</div>
-              <div class="agent-box agent-box--final">
+              <div class="agent-box agent-box">
                 <span class="agent-num">04</span>
-                <span class="agent-name">Investor Strategist</span>
-                <span class="agent-src">Synthesis · entry zones · stop-loss · execution plan</span>
+                <span class="agent-name">Draft Strategist Synthesis</span>
+                <span class="agent-src">composite scoring · portfolio allocation</span>
               </div>
+               <div class="agent-arrow-sep" aria-hidden="true">→</div>
+              <div class="agent-box agent-box">
+                <span class="agent-num">05</span>
+                <span class="agent-name">Critic Adversarial Review</span>
+                <span class="agent-src">12 failure-mode checks · correction directives</span>
+              </div>
+              
+              <div class="agent-arrow-sep" aria-hidden="true">→</div>
+              <div class="agent-box agent-box--final">
+                <span class="agent-num">06</span>
+                <span class="agent-name">Final Strategist self-corrected output</span>
+                <span class="agent-src">validated allocations · execution plan</span>
+              </div>
+      
+      
             </div>
           </div>
 
