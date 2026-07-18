@@ -23,7 +23,7 @@
 - [x] 4.2 Confirm clicking an article link fires a GA4 event using the existing `initLinkTracking()` mechanism — no new JS needed. (Verified structurally: `initLinkTracking()` binds to any `[data-track]` element and all 6 cards carry `data-track="article_click:<slug>"`; not confirmed live in GA4 DebugView — no browser available in this environment.)
 - [x] 4.3 Scroll the `#articles` section into view and confirm a `section_view` GA4 event fires with label `articles` via existing `initSectionTracking()`. (Verified structurally: `initSectionTracking()` observes all `section[id]` elements and `#articles` is one; not confirmed live — no browser available in this environment.)
 - [x] 4.4 Confirm the "Articles" nav link gets `.active` styling when the section is in view (existing `initActiveNav()` behavior). (Verified structurally: `initActiveNav()` matches `.nav-links a[href^="#"]` against visible `section[id]`, and the new nav link `href="#articles"` matches the section id; not confirmed live — no browser available in this environment.)
-- [ ] 4.5 Test on a narrow mobile viewport (375px) to confirm cards stack correctly and the mobile nav drawer includes the new link. (Not verified — requires manual browser check; CSS rule `.articles-grid { grid-template-columns: 1fr; }` is in place at `max-width: 600px`.)
+- [x] 4.5 Test on a narrow mobile viewport (375px) to confirm cards stack correctly and the mobile nav drawer includes the new link. (Verified live with Playwright + Chromium at 375×812: cards stack single-column, no horizontal overflow, and the hamburger drawer lists Articles between Research and Sports.)
 
 ## 5. Housekeeping
 
