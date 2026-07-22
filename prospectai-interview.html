@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ---- Primary SEO ----------------------------------------- -->
+  <title>The ProspectAI Interview | Multi-Agent AI, Public Criticism &amp; Measuring What Works | Moises Prat</title>
+  <meta name="description" content="An interview with Moises Prat, creator of ProspectAI, on why the system uses six agents, why LLMs never do arithmetic, and how public feedback rebuilt its evaluation methodology." />
+  <meta name="author" content="Moises Prat" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://moisesprat.dev/prospectai-interview.html" />
+
+  <!-- ---- Open Graph ------------------------------------------ -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="The ProspectAI Interview | Multi-Agent AI, Public Criticism &amp; Measuring What Works" />
+  <meta property="og:description" content="An interview with Moises Prat, creator of ProspectAI, on multi-agent architecture, public criticism, and what it takes to measure whether an AI system actually works." />
+  <meta property="og:url"         content="https://moisesprat.dev/prospectai-interview.html" />
+  <meta property="og:image"       content="https://moisesprat.dev/assets/profile-photo.webp" />
+  <meta property="og:locale"      content="en_GB" />
+
+  <!-- ---- Twitter Card --------------------------------------- -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="The ProspectAI Interview | Multi-Agent AI, Public Criticism &amp; Measuring What Works" />
+  <meta name="twitter:description" content="An interview with Moises Prat, creator of ProspectAI, on multi-agent architecture, public criticism, and what it takes to measure whether an AI system actually works." />
+  <meta name="twitter:image"       content="https://moisesprat.dev/assets/profile-photo.webp" />
+
+  <!-- ---- Fonts ---------------------------------------------- -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital@1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- ---- Styles --------------------------------------------- -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- ---- Favicon -------------------------------------------- -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- ---- Google Analytics 4 --------------------------------- -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GN75WJ31JM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('config', 'G-GN75WJ31JM');
+  </script>
+
+  <!-- ---- SimpleAnalytics ------------------------------------ -->
+  <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+  <!-- ---- Structured Data (JSON-LD) -------------------------- -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://moisesprat.dev/#person",
+        "name": "Moises Prat"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://prospect-ai.moisesprat.dev/#app",
+        "name": "ProspectAI"
+      },
+      {
+        "@type": "Article",
+        "@id": "https://moisesprat.dev/prospectai-interview.html#article",
+        "headline": "The best feedback I got was someone telling me my numbers were wrong",
+        "description": "An interview with Moises Prat, creator of ProspectAI, on multi-agent architecture, public criticism, and what it takes to measure whether an AI system actually works.",
+        "url": "https://moisesprat.dev/prospectai-interview.html",
+        "datePublished": "2026-07-22",
+        "author": { "@id": "https://moisesprat.dev/#person" },
+        "about": { "@id": "https://prospect-ai.moisesprat.dev/#app" },
+        "mentions": { "@id": "https://prospect-ai.moisesprat.dev/#app" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ================================================================
+       COOKIE BANNER
+  ================================================================ -->
+  <div id="cookie-banner" role="dialog" aria-label="Cookie consent">
+    <p>This site uses cookies for analytics. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:#7ea5f8;text-decoration:underline;">Privacy policy</a>.</p>
+    <div class="ck-btns">
+      <button class="accept" onclick="acceptCookies()">Accept</button>
+      <button class="decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       NAVIGATION
+  ================================================================ -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html#hero" aria-label="Moises Prat — back to top">MP<span>.</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#professional" data-track="nav_click:professional">Professional</a></li>
+        <li><a href="index.html#research"     data-track="nav_click:research">Research</a></li>
+        <li><a href="index.html#articles"     data-track="nav_click:articles">Articles</a></li>
+        <li><a href="index.html#sports"       data-track="nav_click:sports">Sports</a></li>
+        <li><a href="index.html#contact"      data-track="nav_click:contact">Contact</a></li>
+      </ul>
+      <a href="mailto:moisesprat@gmail.com" class="nav-contact" data-track="link_click:email">moisesprat@gmail.com</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       SECTION: INTERVIEW
+  ================================================================ -->
+  <section id="interview" aria-labelledby="interview-heading">
+    <div class="container">
+
+      <div class="reveal">
+        <span class="section-label">Interview</span>
+        <h1 class="section-title" id="interview-heading">
+          "The best feedback I got was someone telling me my <em class="serif-part">numbers were wrong</em>"
+        </h1>
+        <p class="interview-byline">
+          An interview with Moises Prat, creator of ProspectAI, on multi-agent architecture, public
+          criticism, and what it takes to measure whether an AI system actually works.
+        </p>
+      </div>
+
+      <div class="interview-body stagger">
+
+        <div class="interview-qa">
+          <p class="interview-question">Let's start at the beginning. Where did ProspectAI come from?</p>
+          <p class="interview-answer">
+            It came from wanting to learn agentic AI properly. I work in enterprise AI, and I kept
+            reading about multi-agent systems without having built one end to end. Reading about a
+            pattern and shipping it are different things.
+          </p>
+          <p class="interview-answer">
+            I picked investment research as the domain for a specific reason. It is a problem where
+            you cannot fool yourself for long. If you build a chatbot, "it feels good" is an
+            acceptable result. If you build something that picks stocks, the market tells you if you
+            were right. I wanted a domain with an external scoreboard.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">Why six agents? That sounds like a lot for what could be one prompt.</p>
+          <p class="interview-answer">
+            The obvious way to build it is one agent: here is a stock, analyze it, tell me if it is a
+            buy. It works in a demo and falls apart in practice.
+          </p>
+          <p class="interview-answer">
+            That single prompt has to hold macro context, technical signals, fundamentals and a final
+            decision all at once. When the output is wrong, you cannot tell which part failed. When it
+            invents a number, nothing catches it. And the model talks itself into a conclusion, because
+            there is nobody in the loop to disagree.
+          </p>
+          <p class="interview-answer">
+            So I split it. A Market Analyst sets the macro and sector context. That context feeds a
+            Technical Analyst and a Fundamental Analyst. A Draft Strategist turns those views into a
+            candidate portfolio. Then a Critic attacks the draft, and a Final Strategist revises it.
+          </p>
+          <p class="interview-answer">
+            It is not about having more agents. It is about having clear boundaries between them.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">You have said the most important rule in the system is that LLMs never do arithmetic. Why so strict?</p>
+          <p class="interview-answer">
+            Because a model that can hallucinate a stock thesis can also hallucinate a performance
+            metric. And the second one is far more dangerous, because it is the number you use to
+            decide whether the first one was any good.
+          </p>
+          <p class="interview-answer">
+            So no figure that reaches the portfolio comes from a language model. Not the composite
+            score, not the position size, not the stop loss, not the risk reward ratio. All of it is
+            computed by deterministic Python. The model decides which signals matter and why. The math
+            is not its job.
+          </p>
+          <p class="interview-answer">
+            That boundary also turned out to be the answer to the most common criticism I get, which is
+            "why would you let an AI pick stocks when you cannot audit its training bias?" It is a fair
+            concern. But training bias can color the narrative, and it cannot silently bias the picks,
+            because the picks come out of the deterministic layer.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">Tell me about the Critic. It seems to be the part people ask about most.</p>
+          <p class="interview-answer">
+            It is my favorite component and it does zero analysis.
+          </p>
+          <p class="interview-answer">
+            It gets a fresh context and one instruction: attack the draft. Find the missing catalyst,
+            the contradictory signal, the setup where the risk does not justify the reward. It does not
+            rebuild the portfolio. It produces structured revision directives, and the Final Strategist
+            applies them.
+          </p>
+          <p class="interview-answer">
+            People ask why I do not just tell one agent to double check its own work. Because a model
+            reviewing its own output in the same context tends to agree with itself. A separate role,
+            with a fresh context and an adversarial instruction, actually pushes back.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">You have been sharing the project publicly for months. What has the feedback been like?</p>
+          <p class="interview-answer">
+            Uncomfortable and extremely useful, in that order.
+          </p>
+          <p class="interview-answer">
+            I want to be clear about this because it is the real story of the project. The
+            improvements that mattered did not come from me sitting alone with the code. They came
+            from people on Reddit and other communities telling me, in public, that something I had
+            built was wrong. Almost none of it was hostile. Most of it was people who knew more than me
+            about a specific thing, taking the time to say so.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">Can you give an example?</p>
+          <p class="interview-answer">
+            The biggest one changed the whole system.
+          </p>
+          <p class="interview-answer">
+            Someone challenged my performance numbers. I was comparing my signals against the S&amp;P
+            500 measured from a fixed date. His point was that this is not a fair comparison, because
+            my signals were generated on different dates across a two month window. A signal from May
+            24 has no business being compared to an index return measured from April 23. Different
+            windows, different market weather.
+          </p>
+          <p class="interview-answer">
+            He was right. So I rebuilt the evaluation layer to compare every signal against the
+            benchmark over its own trigger to current window.
+          </p>
+          <p class="interview-answer">
+            And then I took it further than he asked, because once I started thinking about fair
+            comparisons I realised the S&amp;P was the wrong benchmark entirely. Comparing a healthcare
+            pick to the S&amp;P tells you very little. The honest comparison is against the healthcare
+            sector itself. So now every signal is measured against its own sector ETF.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">What did that reveal?</p>
+          <p class="interview-answer">
+            Two things, and they went in opposite directions.
+          </p>
+          <p class="interview-answer">
+            Healthcare looked like a clear win on raw return. It was positive, and I would have posted
+            it. But the healthcare sector had run harder than my picks over the same period, so against
+            the sector ETF I was actually behind. I was standing on an escalator and taking credit for
+            the climb.
+          </p>
+          <p class="interview-answer">
+            Then technology showed the opposite. Raw return was negative, which looks like a failure.
+            But the tech sector had fallen further, so the picks beat their sector by a couple of
+            points. A real win hiding inside a negative number.
+          </p>
+          <p class="interview-answer">
+            That second case is why the exercise was worth doing. A metric that only makes your numbers
+            smaller is not rigor, it is pessimism. One that moves them in both directions is measuring
+            something real.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">Any other feedback that changed the product?</p>
+          <p class="interview-answer">
+            Two more that I think about often.
+          </p>
+          <p class="interview-answer">
+            A pharma investor told me that financial indicators alone are not enough in healthcare. He
+            was right, and it explained the healthcare gap. My fundamental analyst was asking the same
+            questions for every company in every sector: valuation ratios, financial health, dividend
+            yield. But every sector has its own drivers. In healthcare it might be the strength of the
+            drug pipeline. In semiconductors, the inventory cycle. In energy, the commodity price.
+            Generic ratios do not capture that. Sector specific inputs are now on the roadmap.
+          </p>
+          <p class="interview-answer">
+            The other one I caught myself. My dashboard once displayed a card reading one hundred
+            percent win rate. It was two signals. Two. A hundred percent on a sample of two is a coin
+            landing heads twice. I nearly published it. Now the evaluation layer refuses to report a
+            metric below a real sample size. A dashboard showing confident numbers on tiny samples is
+            not a feature, it is a bug.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">Where do the numbers stand today?</p>
+          <p class="interview-answer">
+            The signals are currently ahead of the S&amp;P by around five points across the full set,
+            over matched windows.
+          </p>
+          <p class="interview-answer">
+            But I would rather people looked at the number underneath that one. When you strip out
+            sector allocation and measure only selection, meaning did the picks beat the sectors they
+            came from, the edge is smaller. Positive, but smaller. Part of what looks like skill against
+            the index is really just having been in the right sectors.
+          </p>
+          <p class="interview-answer">
+            And one sector carries a large share of it. That is a finding, not a verdict, but it is the
+            sort of thing you only learn if you build the instrument that can see it.
+          </p>
+          <p class="interview-answer">
+            I should be clear on the caveats, because they matter more than the headline. This is paper
+            traded on public data. Positions are open and marked to market, so the numbers move daily.
+            Equal weight, no stop losses applied, and a single short market regime. It is nowhere near a
+            track record.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">What would you tell someone building something similar?</p>
+          <p class="interview-answer">
+            Build the evaluation layer earlier than you think you need it. I spent months on agent
+            architecture and treated measurement as something to bolt on at the end. It should have
+            been part of the design from day one, because until you have it, your system will
+            confidently tell you it is working and you will have no way to check.
+          </p>
+          <p class="interview-answer">
+            And publish the version of your numbers that makes you look worse. It is uncomfortable, and
+            it is the only reason anyone should believe the ones that make you look good.
+          </p>
+        </div>
+
+        <div class="interview-qa">
+          <p class="interview-question">What is next?</p>
+          <p class="interview-answer">
+            Sector specific fundamental analysis, so the system stops asking pharma companies
+            semiconductor questions. Multi sector portfolios, which is an interesting architectural
+            problem around parallel execution. And more data, because the honest answer to "does this
+            work" is still that the sample is too small to say.
+          </p>
+        </div>
+
+      </div>
+
+      <p class="interview-disclaimer reveal">
+        ProspectAI is a technical demonstration of multi-agent AI systems. It is paper traded on public
+        market data and is explicitly not investment advice. The live pipeline and full benchmark
+        breakdown are at
+        <a href="https://prospect-ai.moisesprat.dev" target="_blank" rel="noopener noreferrer">prospect-ai.moisesprat.dev</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+  ================================================================ -->
+  <footer>
+    <p>
+      © <span id="year"></span> Moises Prat ·
+      <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-ND 4.0</a>
+      · Barcelona, Spain
+    </p>
+  </footer>
+
+  <!-- ---- Scripts ----------------------------------------------- -->
+  <script src="js/main.js" defer></script>
+
+  <!-- Simple Analytics Setup -->
+  <!-- 100% privacy-first analytics -->
+  <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <script async src="https://scripts.simpleanalyticscdn.com/auto-events.js"></script>
+  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
+
+</body>
+</html>

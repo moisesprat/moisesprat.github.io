@@ -1592,3 +1592,75 @@ footer a:hover { color: #7ea5f8; }
   .marathon-table th,
   .marathon-table td { padding: 0.6rem 0.7rem; }
 }
+
+/* ================================================================
+   SECTION: INTERVIEW (prospectai-interview.html)
+   ================================================================ */
+
+#interview {
+  background: var(--off);
+  padding: 5.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.interview-byline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--mid);
+  max-width: 720px;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+.interview-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 720px;
+}
+
+.interview-qa {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+}
+
+.interview-question {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+  line-height: 1.5;
+}
+
+.interview-answer {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.8;
+}
+
+.interview-answer + .interview-answer { margin-top: 1rem; }
+
+.interview-disclaimer {
+  max-width: 720px;
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.interview-disclaimer a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .interview-qa { padding: 1.5rem 1.25rem; }
+}
