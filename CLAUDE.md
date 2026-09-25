@@ -82,6 +82,12 @@ Update `<lastmod>` in `sitemap.xml` after significant content changes.
    ```html
    <img src="/assets/logos/aspentech.svg" alt="AspenTech" height="28">
    ```
+4. **Check the `.stagger` nth-child limit in `styles.css`** (see Known Pitfalls below) if the grid has grown past 11 cards.
+
+## Known Pitfalls
+
+- **`.stagger` reveal animation has a hardcoded nth-child ceiling.** In `styles.css`, `.stagger.visible > *:nth-child(N)` rules are explicitly numbered (originally only up to `nth-child(11)`). Any child beyond that count has no matching rule, so it stays stuck at the base `.stagger` state — `opacity: 0` — permanently invisible, even though the element, image, and link are all otherwise perfectly correct. A `:nth-child(n+12)` catch-all rule now covers overflow, but if you add many more items to any `.stagger` container (companies grid, certs grid, articles grid, etc.), extend or generalize these rules rather than assuming a missing element is a caching/asset/link bug.
+- **When a new element "doesn't show up" but the link/href is correct and the image loads (verify via `curl` or Network tab), suspect the `.reveal`/`.stagger` scroll-animation classes before suspecting the asset itself.** This cost significant back-and-forth once — the PNG color mode, browser cache, and dev-server restarts were all red herrings; the real cause was the CSS rule ceiling above.
 
 ## Adding the IRONMAN Nice Photo
 

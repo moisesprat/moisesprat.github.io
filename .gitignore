@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 dist/
+
+# BMad Method skills and working directories
+.claude/skills/bmad-*/
+_bmad/
+_bmad-output/

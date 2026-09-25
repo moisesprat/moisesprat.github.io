@@ -233,6 +233,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .stagger.visible > *:nth-child(9)  { opacity: 1; transform: none; transition-delay: 0.64s; }
 .stagger.visible > *:nth-child(10) { opacity: 1; transform: none; transition-delay: 0.72s; }
 .stagger.visible > *:nth-child(11) { opacity: 1; transform: none; transition-delay: 0.80s; }
+.stagger.visible > *:nth-child(n+12) { opacity: 1; transform: none; transition-delay: 0.80s; }
 
 /* ---- Pulse dot ----------------------------------------------- */
 
