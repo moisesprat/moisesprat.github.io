@@ -1477,6 +1477,9 @@ footer a {
 }
 footer a:hover { color: #7ea5f8; }
 
+.sa-badge { display: inline-block; margin-top: 0.9rem; text-decoration: none; }
+.sa-badge img { height: 28px; width: auto; vertical-align: middle; }
+
 /* ================================================================
    RESPONSIVE
    ================================================================ */
